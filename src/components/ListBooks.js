@@ -17,7 +17,7 @@ class ListBooks extends Component {
              title={book.title}
              authors={book.authors}
              coverUrl={book.imageLinks}
-             shelf={book.shelf}/>
+            />
           </li>
         ))}
       </ol>

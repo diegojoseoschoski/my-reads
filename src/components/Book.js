@@ -6,11 +6,10 @@ class Book extends Component {
     title: PropTypes.string.isRequired,
     authors: PropTypes.array.isRequired,
     coverUrl: PropTypes.object.isRequired,
-    shelf: PropTypes.string.isRequired
   }
 
   render() {
-    const {title,authors,coverUrl,shelf} = this.props
+    const {title,authors,coverUrl} = this.props
 
     return (
       <div className="book">
