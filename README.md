@@ -1,4 +1,4 @@
-# MyReads Project
+# MyReads Project [![Build Status](https://travis-ci.org/diegojoseoschoski/my-reads.svg?branch=master)](https://travis-ci.org/diegojoseoschoski/my-reads)
 
 This project is an application built in React to move books from one shelf into another. Books can
 be added into three bookshelves currently reading, want to read, and read.  
