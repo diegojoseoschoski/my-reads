@@ -6,9 +6,16 @@ import './App.css'
 import {Route, Link} from 'react-router-dom'
 
 class BooksApp extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.handleSearchBooks = this.handleSearchBooks.bind(this)
+  }
+
   state = {
     showSearchPage: false,
-    books: []
+    books: [],
+    searchBooksList: []
   }
 
   componentDidMount() {
@@ -17,12 +24,41 @@ class BooksApp extends React.Component {
     })
   }
 
+
+  handleSearchBooks(query) {
+    BooksAPI.search(query).then((searchBooksList) => {
+        if (query.length > 0) {
+          if (searchBooksList.error) {
+            this.setState({ searchBooksList: [] })
+          } else {
+            let bookFound
+            searchBooksList.forEach((bookSearch) => {
+              bookFound = this.state.books.find((book)=> book.id === bookSearch.id)
+              if (bookFound) {
+                bookSearch.shelf = bookFound.shelf;
+              } else {
+                bookSearch.shelf ='None'
+              }
+            })
+            this.setState({searchBooksList})
+          }
+
+        } else {
+            this.setState({ searchBooksList: []})
+        }
+    })
+  }
+
+  onShelfChange(event) {
+    this.setState({value: event.target.value})
+  }
+
   render() {
     return (
       <div className="app">
         <Route exact path="/" render={() => (
           <div>
-            <ListShelfs books={this.state.books}/>
+            <ListShelfs books={this.state.books} onShelfChange={this.onShelfChange}/>
             <div className="open-search">
               <Link to="/search"> Add a book </Link>
             </div>
@@ -31,7 +67,7 @@ class BooksApp extends React.Component {
 
         <Route path='/search' render={() => (
           <div>
-            <SearchBooks books={this.state.books}/>
+            <SearchBooks books={this.state.searchBooksList} onSearchBooks={this.handleSearchBooks}/>
           </div>
 				)} />
       </div>

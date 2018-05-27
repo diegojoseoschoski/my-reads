@@ -4,11 +4,12 @@ import PropTypes from 'prop-types'
 
 class ListShelfs extends Component {
   static propTypes = {
-    books: PropTypes.array.isRequired
+    books: PropTypes.array.isRequired,
+    onShelfChange: PropTypes.func.isRequired
   }
 
   render() {
-    const {books} = this.props
+    const {books, onShelfChange} = this.props
     let booksWantToRead = books.filter((book) => book.shelf ==='wantToRead')
     let booksCurrentlyReading = books.filter((book) => book.shelf ==='currentlyReading')
     let booksRead = books.filter((book) => book.shelf ==='read')
@@ -20,8 +21,8 @@ class ListShelfs extends Component {
         </div>
         <div className="list-books-content">
           <div>
-          <BookShelf title="Want to Read" books={booksWantToRead} />
-          <BookShelf title="Currently Reading" books={booksCurrentlyReading} />
+          <BookShelf title="Want to Read" books={booksWantToRead} onShelfChange={onShelfChange}/>
+          <BookShelf title="Currently Reading" books={booksCurrentlyReading} onShelfChange={onShelfChange} />
           <BookShelf title="Read" books={booksRead} />
           </div>
         </div>

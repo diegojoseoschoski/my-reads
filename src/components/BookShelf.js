@@ -5,15 +5,16 @@ import PropTypes from 'prop-types'
 class BookShelf extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    onShelfChange: PropTypes.func.isRequired
   }
   render() {
-    const {title, books} = this.props
+    const {title, books, onShelfChange} = this.props
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">{title}</h2>
         <div className="bookshelf-books">
-          <ListBooks books={books} />
+          <ListBooks books={books} onShelfChange={onShelfChange} />
         </div>
       </div>
     )
