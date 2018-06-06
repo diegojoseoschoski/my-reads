@@ -16,10 +16,7 @@ class ListBooks extends Component {
 
           <li key={book.id}>
             <Book
-             title={book.title}
-             authors={book.authors}
-             coverUrl={book.imageLinks}
-             shelf={book.shelf}
+             book={book}
              onShelfChange={onShelfChange}
             />
           </li>

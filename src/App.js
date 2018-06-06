@@ -10,6 +10,7 @@ class BooksApp extends React.Component {
   constructor(props) {
     super(props);
     this.handleSearchBooks = this.handleSearchBooks.bind(this)
+    this.onShelfChange = this.onShelfChange.bind(this)
   }
 
   state = {
@@ -49,8 +50,12 @@ class BooksApp extends React.Component {
     })
   }
 
-  onShelfChange(event) {
-    this.setState({value: event.target.value})
+  onShelfChange(selectedBook) {
+    BooksAPI.update(selectedBook, selectedBook.shelf).then(() => {
+     this.setState(state => ({
+       books: state.books.filter((book) => book.id !== selectedBook.id).concat([selectedBook])
+     }))
+   })
   }
 
   render() {
@@ -65,9 +70,15 @@ class BooksApp extends React.Component {
           </div>
 				)} />
 
-        <Route path='/search' render={() => (
+        <Route path='/search' render={({history}) => (
           <div>
-            <SearchBooks books={this.state.searchBooksList} onSearchBooks={this.handleSearchBooks}/>
+            <SearchBooks
+              books={this.state.searchBooksList}
+              onSearchBooks={this.handleSearchBooks}
+              onShelfChange={(selectedBook) => {
+                this.onShelfChange(selectedBook)
+                history.push('/')
+              }}/>
           </div>
 				)} />
       </div>

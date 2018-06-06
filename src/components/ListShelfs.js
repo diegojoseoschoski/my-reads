@@ -23,7 +23,7 @@ class ListShelfs extends Component {
           <div>
           <BookShelf title="Want to Read" books={booksWantToRead} onShelfChange={onShelfChange}/>
           <BookShelf title="Currently Reading" books={booksCurrentlyReading} onShelfChange={onShelfChange} />
-          <BookShelf title="Read" books={booksRead} />
+          <BookShelf title="Read" books={booksRead} onShelfChange={onShelfChange}/>
           </div>
         </div>
 
