@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import ListBooks from './ListBooks'
 import PropTypes from 'prop-types'
-import escapeRegExp from 'escape-string-regexp'
 import {Link} from 'react-router-dom'
+import sortBy from 'sort-by';
 
 class SearchBooks extends Component {
 
@@ -24,9 +24,8 @@ class SearchBooks extends Component {
   }
 
   render() {
-    const { books, onSearchBooks} = this.props
+    const { books, onShelfChange} = this.props
     const { query} = this.state
-
 
     let showingBooks
     if(query) {
@@ -34,6 +33,7 @@ class SearchBooks extends Component {
     } else {
       showingBooks = []
     }
+     showingBooks.sort(sortBy('title'));
 
 
     return (
@@ -50,7 +50,7 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <ListBooks books={showingBooks} onShelfChange={onSearchBooks} />
+          <ListBooks books={showingBooks} onShelfChange={onShelfChange} />
         </div>
       </div>
     )

@@ -30,7 +30,7 @@ class Book extends Component {
    }
 
   render() {
-    const {book, onShelfChange} = this.props
+    const {book} = this.props
     return (
       <div className="book">
         <div className="book-top">

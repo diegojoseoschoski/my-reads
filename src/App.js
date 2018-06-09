@@ -14,7 +14,6 @@ class BooksApp extends React.Component {
   }
 
   state = {
-    showSearchPage: false,
     books: [],
     searchBooksList: []
   }
@@ -77,7 +76,6 @@ class BooksApp extends React.Component {
               onSearchBooks={this.handleSearchBooks}
               onShelfChange={(selectedBook) => {
                 this.onShelfChange(selectedBook)
-                history.push('/')
               }}/>
           </div>
 				)} />
