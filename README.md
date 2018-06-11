@@ -6,8 +6,8 @@ First Project of Udacity's React Nanodegree. The application show books in three
 
 To run this project:
 
-* install all project dependencies with `npm install`
-* start the development server with `npm start`
+* install all project dependencies with `npm install` or `yarn install`
+* start the development server with `npm start` or `yarn start`
 
 
 ## Create React App
