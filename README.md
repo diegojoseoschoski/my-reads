@@ -1,11 +1,6 @@
 # MyReads Project [![Build Status](https://travis-ci.org/diegojoseoschoski/my-reads.svg?branch=master)](https://travis-ci.org/diegojoseoschoski/my-reads)
 
-This project is an application built in React to move books from one shelf into another. Books can
-be added into three bookshelves currently reading, want to read, and read.  
-
-Books can be moved from one shelf to another from the main page, or by adding a book through searching.  
-When the add button is clicked the search page will be displayed.  On the search page a book can be 
-searched for and added into one of the three bookshelves.
+First Project of Udacity's React Nanodegree. The application show books in three categorys 'Read', 'Currently Reading' and 'Want to Read'
 
 ## Deployment Instructions
 
